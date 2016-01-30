@@ -4,12 +4,30 @@
     <meta charset="utf-8">
     <title> My Portfolio </title>
     <meta name="viewport" content="width=320, initial-scale=1, user-scalable=yes, initial-scale=1">
-    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="vendor/styles/normalize.css">
+    <link rel="stylesheet" href="styles/icons.css">
+    <link rel="stylesheet" href="styles/layout.css">
     <link rel="stylesheet" href="styles/modules.css">
+    <link rel="stylesheet" href="styles/states.css">
+
+
+    <script id= "project-template" type="text/x-handlebars-template">
+      <article class ='tab-content'>
+        <header class='project'>
+          <h1> {{title}} </h1>
+          <div class='published'>
+            Added <time pubdate="" datetime="">{{date}} </time>
+          </div>
+          <section class='image'> <img src ='{{screenshot}}' </section>
+          <section class='summary'> <p> {{blurb}} </p> </section>
+        </header>
+      </article>
+    </script>
   </head>
   <body>
     <main>
-      <header class='span'>
+      <header id='menu-area' class='span'>
+        <h1 class='icon-menu'></h1>
         <nav class='top-nav navigation'>
           <ul>
             <li class='topnav tab'>Project-1 </li>
@@ -19,9 +37,9 @@
         </nav>
       </header>
 
-<div class='container'>
-      <section id='project'>
-        <article class ='template tab-content'>
+    <div class='container'>
+      <section id='projects'>
+        <!-- <article class ='template tab-content'>
           <header class= 'project'>
             <h1> Project Title </h1>
             <div class='published'>
@@ -29,7 +47,7 @@
           </header>
           <section class='image'> <img src =''> </section>
           <section class='summary'> </section>
-        </article>
+        </article> -->
       </section>
     </div>
 
@@ -47,6 +65,7 @@
     </div>
     </main>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.4/handlebars.js"></script>
     <script src='scripts/projects.js'></script>
     <script src='scripts/portfolio.js'></script>
     <script src="scripts/filterOptions.js"></script>
