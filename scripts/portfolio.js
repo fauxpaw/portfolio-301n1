@@ -14,11 +14,27 @@ Project.prototype.render = function(){
 
 };
 
-database.sort(function(a,b){
-  return (new Date(b.date)) - (new Date(a.date));
-});
+projects.fetchAll = function(){
+  if (localStorage.rawData) {
+    console.log('getting data from local...');
+    Project.loadAll(JSON.parse(localStorage.rawData));
+  }
+  else {
+    $.getJSON('data/blogArticles.json', function(rawData) {
+      Project.loadAll(rawData);
+      localStorage.rawData = JSON.stringify(rawData);
 
-database.forEach(function(obj){
+    });
+  }
+};
+Project.loadAll = function(rawData){
+  rawData.sort(function(a,b){
+    return (new Date(b.date)) - (new Date(a.date));
+  });
+};
+
+
+rawData.forEach(function(obj){
   projects.push(new Project(obj));
 });
 

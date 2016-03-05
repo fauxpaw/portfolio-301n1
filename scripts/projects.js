@@ -1,4 +1,4 @@
-var database = [
+var rawData = [
   {
     id: 'Project-1',
     title: 'Top Pot Donut Shop Location Model',
