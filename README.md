@@ -1,20 +1,13 @@
-# Portfolio Assignment for Class 4 - Templates and Typography
-
-Use what you learned in the class 4 lecture to improve the structure of your Portfolio app codebase.
+# Class 06 Portfolio assignment
 
 ## User Stories: MVP
-1. As a developer, I want to use Handlebars for my project template, so that I can include new projects more easily.
-- As a developer, I want my CSS styles to follow SMACSS organization, so that I know where to look for creating and editing styles.
+ 1. As a developer, I want to store my project data in a .json file, so that I can keep it organized.
+ - As a developer, I want to retrieve that source data file asynchronously, so that my app logic gets the data just when I need it.
 
-## User Stories: Stretch Goal
-1. As a visitor, I want the site to use great typography, so that I have an enjoyable reading experience.
-  - Set up your h1, h2, h3 elements according to a type scale.
-  - Include some good fonts, that work well together.
+### User Stories: Stretch Goals
+ - As a reader, I only want to have to fetch data when it's updated (and keep it cached locally), so that I don't make unneeded AJAX calls.
 
 ## Technical Requirements and Grading Rubric
- - Add Handlebars to your blogging system.
- - Organize your CSS code according to SMACSS, with at least a file for base, layout, and modules.
-
-## Helpful Resources
- - Handlebars: http://handlebarsjs.com
- - SMACSS: https://smacss.com/
+ - Continue to follow good SMACSS principles.
+ - Be sure to use the correct jQuery method for each AJAX call.
+ - Be thoughtful when functions are executed asynchronously. This is a major source of bugs!

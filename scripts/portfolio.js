@@ -9,33 +9,35 @@ function Project(stuff){
 };
 
 Project.prototype.render = function(){
-  //copy template
-  var $newProject = $('article.template').clone();
-  //find element and attach data to it
-  $newProject.attr('id', this.id);
-  $newProject.find('h1').html(this.title);
-  $newProject.find('img').attr('src', this.screenshot);
-  $newProject.find('section.summary').html(this.blurb);
-  $newProject.find('time').html('about ' + parseInt((new Date() - new Date(this.date))/60/60/24/1000) + ' days ago');
-  //add section break
-  $newProject.append('<hr>');
-
-  $newProject.removeClass('template');
-
-
-
-  return $newProject;
+  var template = Handlebars.compile($('#project-template').html());
+  return template(this);
 
 };
 
-database.sort(function(a,b){
-  return (new Date(b.date)) - (new Date(a.date));
-});
+projects.fetchAll = function(){
+  if (localStorage.rawData) {
+    console.log('getting data from local...');
+    Project.loadAll(JSON.parse(localStorage.rawData));
+  }
+  else {
+    $.getJSON('data/blogArticles.json', function(rawData) {
+      Project.loadAll(rawData);
+      localStorage.rawData = JSON.stringify(rawData);
 
-database.forEach(function(obj){
+    });
+  }
+};
+Project.loadAll = function(rawData){
+  rawData.sort(function(a,b){
+    return (new Date(b.date)) - (new Date(a.date));
+  });
+};
+
+
+rawData.forEach(function(obj){
   projects.push(new Project(obj));
 });
 
 projects.forEach(function(a){
-  $('#project').append(a.render());
+  $('#projects').append(a.render());
 });
